@@ -66,5 +66,16 @@
         "linter": "eslint"
       }
     }
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "nonCacheableOperations": [
+          "hydron:lint",
+          "hydron:build"
+        ]
+      }
+    }
   }
 }
