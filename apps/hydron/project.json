@@ -5,5 +5,51 @@
   "projectType": "application",
   "tags": [],
   "// targets": "to see all targets run: nx show project hydron --web",
-  "targets": {}
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/hydron"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/hydron"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "hydron:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "hydron:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "hydron:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "hydron:build:production"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/hydron/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
 }
