@@ -1,9 +1,0 @@
-{
-  "name": "hydron-e2e",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/hydron-e2e/src",
-  "tags": [],
-  "implicitDependencies": ["hydron"],
-  "// targets": "to see all targets run: nx show project hydron-e2e --web",
-  "targets": {}
-}
